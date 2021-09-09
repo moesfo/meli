@@ -19,7 +19,7 @@ func Mutant(c *gin.Context) {
 	if err := c.BindJSON(&requestData); err != nil {
 		return
 	}
-	r, s := isMutant(requestData)
+	r, s := IsMutant(requestData)
 	if r {
 		apiResponse(http.StatusOK, s)
 	} else if s != "" {
@@ -29,16 +29,16 @@ func Mutant(c *gin.Context) {
 	}
 }
 
-func isMutant(dna DnaRequestData) (r bool, e string) {
-	b, s := isValid(dna)
+func IsMutant(dna DnaRequestData) (r bool, e string) {
+	b, s := IsValid(dna)
 	if !b {
 		return false, s
 	}
-	h := toMatrix(dna)
+	h := ToMatrix(dna)
 
-	x := validateX(h[:])
-	y := validateY(h[:])
-	z := validateZ(h[:])
+	x := ValidateX(h[:])
+	y := ValidateY(h[:])
+	z := ValidateZ(h[:])
 
 	if x+y+z > 1 {
 		return true, ""
@@ -46,7 +46,7 @@ func isMutant(dna DnaRequestData) (r bool, e string) {
 	return false, ""
 }
 
-func validateX(m [][]string) int {
+func ValidateX(m [][]string) int {
 	countX := 0
 	for i, _ := range m {
 		count := 1
@@ -66,7 +66,7 @@ func validateX(m [][]string) int {
 	return countX
 }
 
-func validateY(m [][]string) int {
+func ValidateY(m [][]string) int {
 	countY := 0
 	for i, _ := range m {
 		count := 1
@@ -86,7 +86,7 @@ func validateY(m [][]string) int {
 	return countY
 }
 
-func validateZ(m [][]string) int {
+func ValidateZ(m [][]string) int {
 	countZ := 0
 	for i, _ := range m {
 		count := 1
@@ -108,7 +108,7 @@ func validateZ(m [][]string) int {
 	return countZ
 }
 
-func toMatrix(dna DnaRequestData) (m [][]string) {
+func ToMatrix(dna DnaRequestData) (m [][]string) {
 	matrix := make([][]string, len(dna.Dna))
 	for i, ele := range dna.Dna {
 		t := strings.Split(ele, "")
@@ -117,7 +117,7 @@ func toMatrix(dna DnaRequestData) (m [][]string) {
 	return matrix
 }
 
-func isValid(dna DnaRequestData) (bool, string) {
+func IsValid(dna DnaRequestData) (bool, string) {
 	if !IsSquareMatrix(dna) {
 		return false, "Is not matrix NxN"
 	}
