@@ -1,5 +1,4 @@
-# meli
-Api Identificar Mutante
+# Api Identificar Mutante
 
 Instrucciones de ejecución
 
@@ -14,4 +13,9 @@ Instrucciones de ejecución
 - Check en "Usar la integración de proxy Lambda"
 - Seleccionar la funcion lambda cargada preciamente
 
+
+# URL 
+
+POST https://i2v7f7g5md.execute-api.us-east-2.amazonaws.com/meli/mutant
+GET https://i2v7f7g5md.execute-api.us-east-2.amazonaws.com/meli/
 
