@@ -12,7 +12,7 @@ Instrucciones de ejecución
 - Crear los metodos GET / y POST /mutant 
 - Seleccionar funcion lambda
 - Check en "Usar la integración de proxy Lambda"
-- Seleccionar la funcion lambda cargada preciamente
+- Seleccionar la funcion lambda cargada previamente
 
 
 # URL 
